@@ -1,15 +1,23 @@
 ## HTML (Hyper Text Markup Language)  
 
 #### * 구조  
-''' <시작태그>컨텐츠</종료태그> '''  
+'''
+<시작태그>컨텐츠</종료태그>
+'''  
 
-''' <!DOCTYPE html> '''  
-''' <html lang="ko"> '''  
+'''
+<!DOCTYPE html>
+'''  
+'''
+<html lang="ko">
+'''  
 
 #### * 기초  
 1. <head> 태그
 > <meta> : 문서와 관련된 정보를 담는 태그.  
-''' <meta charset ="utf-8"> '''
+'''
+<meta charset ="utf-8">
+'''
 > <title> : 웹 페이지의 제목을 담는 태그.  
   
 2. <body> 태그
@@ -51,29 +59,37 @@
   
 7. 이미지 태그  
 * <img>  
-''' <img src="이미지 URL"/>'''  
+'''
+<img src="이미지 URL"/>
+'''  
 + src : source의 약자로, 불러올 이미지의 파일 경로나 URL을 속성값으로 가진다.  
-''' <img src="이미지 URL" alt="이미지 대체 문구"/>'''  
+'''
+<img src="이미지 URL" alt="이미지 대체 문구"/>
+'''  
 + alt : alternative text의 약자로, 이미지가 정상 출력되지 않거나 파일이 아예 존재하지 않는 경우 이미지 대신 표시할 문구를 값으로 가진다.  
   
 8. 오디오 태그  
 * <audio> : 오디오 파일이 저장된 경로를 src값으로 설정하면 플레이어가 추가된다.  
-''' <audio controls>  
+'''
+<audio controls>  
     <source src="assets/audio/이름.mp3"
     type="audio/mpeg">
-    </audio> '''  
+    </audio>
+'''  
   
 9. 비디오 태그  
 * <video> : 비디오 파일이 저장된 경로를 src값으로 설정하면, 플레이어가 추가된다.  
-''' <video controls>  
+'''
+<video controls>  
     <source src="assets/video/이름.mp4"
     type="video/mp4">
-    </video> '''  
+    </video>
+'''  
 > <video>는 <audio>와 다르게 height와 width 속성을 지정할 수 있다.  
 > 유튜브 영상 삽입 : 동영상 HTML 코드 복사하여 붙여넣음  
 >   >   <iframe> 사용  
   
-  
+
 
 
 
