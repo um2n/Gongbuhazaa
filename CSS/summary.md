@@ -27,7 +27,7 @@ h1, p {
   
 ##### 3. 값(Value)  
 : ```16px```, ```blue```에 해당하는 부분이며 값은 일반적으로 CSS에 정의된 특정 키워드(blue, block 등)과 수치와 특정 단위(px, %, em, rem, vh, vw 등)으로 나뉜다.  
-> _값은 프로퍼티와 짝을 이루어 사용한다.(<b>>선언</b>) 각 프로퍼티에 허용되는 값의 종류가 정해져 있다._
+> _값은 프로퍼티와 짝을 이루어 사용한다.(<b>선언</b>) 각 프로퍼티에 허용되는 값의 종류가 정해져 있다._
   
 ##### 4. 선언 블록(Declaratio Block)  
 : {} 안의 한 덩어리를 말한다. 각각 적혀 있는 선택자에 한해 스타일이 적용된다. 선언 블록 내부의 다른 선언과 ;로 구분한다.  
@@ -205,11 +205,11 @@ _#target에 검은 테두리가 생김_
 ```
 _top, right, bottom, left 순서로 스타일이 지정됨_  
 
->   1개 : 상화좌우, 2개 : 상하/좌우, 3개 : 상/좌우/하, 4개 : 상/우/하/좌  
+>   1개 : 상하좌우, 2개 : 상하/좌우, 3개 : 상/좌우/하, 4개 : 상/우/하/좌  
 
 * ```border-width```, ```border-color``` : 선의 두께와 색 지정하는 프로퍼티. border-style 없이 지정했을 때에는 적용되지 않는다.  
 
-_```shortcut`` : 한 번에 지정할 수 있다._
+>   ```shortcut``` : 한 번에 지정할 수 있다.  
 ```border:red solid 1px;```  
 
 * ```border-radius``` : 경계선을 둥글게 표현할 때 사용한다.   
@@ -221,7 +221,8 @@ _```shortcut`` : 한 번에 지정할 수 있다._
 _border-radius의 값은 모서리의 반지름의 값_  
 _border-radius는 테두리 존재 여부와 별개로 전체 백그라운드에 적용된다._  
 
-_```shortcut``` : 한 번에 지정하거나 네 방향으로 나눠 부분적으로 적용가능. 4등분으로 나눠서 top-left, top-right, bottom-right, bottom-left 순서로 적용된다._  
+_```shortcut``` : 한 번에 지정하거나 네 방향으로 나눠 부분적으로 적용가능.  
+4등분으로 나눠서 top-left, top-right, bottom-right, bottom-left 순서로 적용된다._  
  _타원형의 radius를 적용할 때에는 가로 반지름, 세로 반지름 순서로 적용된다_  
 
 ##### 3. 패딩(Padding) : 컨텐츠와 경계선 사이의 여백  
@@ -399,7 +400,7 @@ flex-direction : column;
 
 * ```baseline``` : ```justify-content```와 ```align-items``` 모두에서 사용할 수 있는 값이다. 글꼴의 기준선인 baseline을 기준으로 flex item들을 정렬한다. 만약 서로 다른 크기의 글자들에 적용해야 할 경우 baseline을 기준으로 맞춘다.  
 
-##### 4. flex container : 정렬4  
+##### 4. flex container : 정렬3  
 
 ```align-content```는 flex item들이 여러 줄일 경우 ```flex-direction```방향을 기준으로 수직 정렬 방법을 결정한다.  
 
