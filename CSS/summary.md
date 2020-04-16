@@ -413,7 +413,6 @@ flex-direction : column;
  
 ![e4bdfb5b1350631110bdba4a5d78506602851382e7f4c96c92bf8a83902b369e](https://user-images.githubusercontent.com/58182440/79418885-9f513780-7ff0-11ea-917d-9f86999d5c2c.png)
 
-
 >   코드에서 align-content를 쓰기 위해서는 ```flex-wrap:wrap```이 꼭 포함되어야 한다.  
 >   >   ```align-content```는 여러 줄에 걸친 item들이 한 몸처럼 움직이고, ```align-items```는 각 줄이 따로 나누어져 정렬된다.  
 
@@ -425,8 +424,325 @@ flex-direction : column;
   
 flex item의 프로퍼티는 ```display:flex```가 적용된 부모 요소의 자식 요소에만 사용할 수 있다.  
   
-* ```flex-grow``` : flex item의 확장과 관련된다.  단위 없는 숫자 값(비율)을 사용하며 기본값은 0이다.  값이 0일 경우에 flex container가 커져도 flex item의 크기는 커ㅣ지 않고 원래 크기를 유지하지만, 값이 1 이상일 경우에 flex item의 원래 크기와 상관 없이 flex container를 채우기 위해 flex item도 커지게 된다.  
+* ```flex-grow``` : flex item의 확장과 관련된다.  단위 없는 숫자 값(비율)을 사용하며 기본값은 0이다.
+>  값이 0일 경우에 flex container가 커져도 flex item의 크기는 커지지 않고 원래 크기를 유지한다.  
+>  값이 1 이상일 경우에 flex item의 원래 크기와 상관 없이 flex container를 채우기 위해 flex item도 커지게 된다.  
   
+![fe7de951af0f4094fbc3a427599222db7bee9924a9b7917044c53d131213a2f8](https://user-images.githubusercontent.com/58182440/79418971-cf98d600-7ff0-11ea-9e46-77ce6933a7f2.png)
+
+_```flex-grow```크기는 비율이기 때문에 flex container의 크기가 커지거나 줄어들면 동일한 비율로 크기가 커지거나 줄어든다._  
+
+* ```flex-shrink``` : flex item의 축소와 관련있다. 0과 정수(비율)를 사용하며 기본값은 1이다.  
+>  속성값이 0일 경우 flex container 크기가 flex item의 크기보다 작아져도 flex item의 크기가 줄어들지 않고 원래 크기를 유지한다.  
+>  속성값이 1 이상이면 flex container 크기가 작아질 때 flex item의 크기가 flex container 크기에 맞춰 줄어든다.  
+
+![111add767aa3c6087f8d1eafafb79f4c272eb875fe68281df53e03f7c6560aa5](https://user-images.githubusercontent.com/58182440/79419180-446c1000-7ff1-11ea-97c8-880699eda255.png)
+
+
+> ```flex-shrink:0```인 경우 flex item은 작아지지 않기 때문에 flex container를 벗어나게 된다.  
+
+> ```flex-shrink:1```인 경우 flex item은 flex container에 맞춰 줄어든다.  
+
+_```flex-shrink``` 값은 비율이기 때문에 flex container가 줄어들면 각 flex item에 적용한 값을 기준으로 비율에 맞춰 줄어든다._  
+
+* ```flex-basis``` : flex item의 기본 크기를 결정하며, 기본값은 auto이다. 모든 크기 단위를 사용할 수 있다. 
+>   ```flex-basis:auto``` : 각 flex item의 크기가 flex-basis로 할당된다. 그리고 남은 크기를 flex-grow에 따라 2:1의 비율로 나눠가진다. 
+
+![0c0bcdffbc2bf986a20b56847cc3e9eaceafdb8b3feb047ab7b4e56b5b8cc83d](https://user-images.githubusercontent.com/58182440/79419726-57331480-7ff2-11ea-9499-62520846dd5e.png)
+
+
+>   ```flex-basis:0``` : flex-grow에 따라 각 flex item의 크기가 2:1:1 비율로 나눠진다.  
+
+![2558ad547848d2ee39bdd178916cb03304f328784828722a65141c07d0751dfa](https://user-images.githubusercontent.com/58182440/79419782-72058900-7ff2-11ea-9aaa-e5aa2165a889.png)
+
+
+>   ```flex-basis:100px``` : 각 컨텐츠마다 100px을 제외, 즉 총 300px에 해당하는 값을 제외한 크기(테두리)를 2:1:1의 비율로 나눠가진다.  
+
+![75fbdec7605a53b346cbb6cdf0c514230f786e08449c71e9de29cb58f34b5431](https://user-images.githubusercontent.com/58182440/79419863-9a8d8300-7ff2-11ea-9003-775014dfb08a.png)
+
+* ```flex``` : ```flex-grow```,```flex-shrink```,```flex-basis```를 한 번에 설정할 수 있는 축약형.  
+>   _순서 지키기_  
+
+
+#### * 위치 정렬 - grid 1  
+
+Grid : 격자 혹은 눈금을 말한다.  
+_Flexbox가 줄에 대한 정렬이었다면 Grid는 격자, 행렬을 통해 좀 더 정교하고 복잡하게 정렬 및 배치할 수 있다._  
+
+```
+Lines, Track, Area, Gap이라는 영역으로 이루어져있다.
+```  
+
+##### 1. Grid 요소  
+* Grid Lines : 격자를 이루는 선의 집합. Grid를 이루는 행과 열의 선들을 모두 일컫는다.  
+>   행 : Grid column, 열 : Grid row  
+
+* Grid Track : 평행한 Grid Line 두 줄 사이의 공간을 말한다.  
+
+* Grid Area : Grid Line 네 줄로 둘러싸인 공간을 말한다. 
+
+* Grid Gap : Grid Lines의 두께를 말한다. 
+
+##### 2. Grid 구성  
+Grid Container와 Grid items로 구성되어 있다.  
+_Grid item ⊂ Grid Container_  
+
+##### 3. grid container:template  
+
+* ```display:grid/inline-grid``` : Grid Container를 사용하고 싶다면 display를 통해 선언해야 한다. 값으로는 grid 또는 inline-grid를 설정할 수 있다.  
+>   grid : display:block의 특성을 갖는 Grid Container를 정의  
+>   inline-grid : display:inline의 특성을 갖는 Grid Container를 정의  
+
+* ```grid-template-rows/columns``` : Grid Track의 크기를 정의한다.
+>   grid-template-rows : 행에 해당하는 grid track의 크기  
+>   grid-template-columns : 열에 해당하는 grid track의 크기  
+
+![b9b5000232373b85106a8b399030f0bf995e4eccfe2658b143cd5cc5a7c0b665](https://user-images.githubusercontent.com/58182440/79421021-f78a3880-7ff4-11ea-9bfd-1c3d721001a5.png)
+
+_```gird-template-rows: 40px 40px 40px```와 같이 반복되는 값을 쉽게 할당하려면 ```repeat()```함수를 사용하면 된다._  
+```
+grid-template-rows: repeat(10, 40px);
+```
+>   repeat함수는 grid-template-rows와 grid-template-columns에서만 사용할 수 있다.  
+
+```
+.main {
+	display: grid;
+	grid-template-rows: 128px auto 240px;
+	grid-template-columns: 1fr 3fr 1fr;
+}
+``` 
+![178e4b7d723b8703624a05e1832cb1e7796a58d307fc580019b7ed812d48e043](https://user-images.githubusercontent.com/58182440/79421285-72ebea00-7ff5-11ea-8936-6de91a7b0d22.png)
+
+>   fr : fraction의 약자로 파편, 분수를 뜻한다. Grid Container에 남은 공간의 비율을 나타내는 유연한 단위다. _fr은 비율이기 때문에 Grid Container의 너비가 변하더라도 해당 비율을 유지한다_  
+
+* ```grid-template-areas``` : Grid Area의 이름을 할당한다.  
+>   같은 이름을 가진 Grid Area끼리 셀병합된다.  
+
+![d9ee2df8f031d3c14cd783756a1d43200c16b7c60dfda127f72d56483cfca4c4](https://user-images.githubusercontent.com/58182440/79421618-294fcf00-7ff6-11ea-949e-f660d98761ea.png)
+
+> gird-template-areas의 값은 ""로 한 행을 표현하며, 여러 행을 띄어쓰기로 구분한다.  
+
+```
+grid-template-areas: /* ㄴ 모양 ❌ */
+		"hd hd hd"
+		"nav content ad"
+		"nav nav ft";
+
+grid-template-areas: /* ㅗ 모양 ❌ */
+		"hd hd hd"
+		"nav ft ad"
+		"ft ft ft";
+``` 
+
+_직사각형 모양이 되어야 레이아웃이 무너지지 않는다._  
+
+> 공간을 비우고 싶다면 . 또는 none을 입력한다.  
+```
+grid-template-areas: 
+		"hd hd hd"
+		"nav content ad"
+		". ft none";
+```
+![b952702ed010fcfc47dfdde8ceba7df773c67c006f4bd6b9490b5063ecc87717](https://user-images.githubusercontent.com/58182440/79421829-9cf1dc00-7ff6-11ea-829b-e1cb4a709561.png)
+
+_grid-template-areas의 값은 전체 grid area 수와 동일해야 한다._  
+
+* ```grid-template``` : grid-template-xxx에 해당하는 모든 프로퍼티의 단축 프로퍼티다.  
+
+```.main {
+	display: grid;
+	grid-template-rows: 128px auto 240px;
+	grid-template-columns: 1fr 3fr 1fr;
+	grid-template-areas: 
+		"hd hd hd"
+		"nav content ad"
+		"ft ft ft";
+}
+```
+는 아래와 같다.  
+```
+.main {
+	display: grid;
+	grid-template: 
+		"hd hd hd" 128px
+		"nav content ad" auto
+		"ft ft ft" 240px
+		/ 1fr 3fr 1fr;
+}
+```  
+
+##### 4. gird container:gap  
+
+* ```grid-row/column-gap``` : 각 행과 열 사이의 간격을 지정할 수 있다.  
+
+![2b1738a258d59a79b7c09525afe37be4c50ac78c89a29f82cca0fbe9c97120ff](https://user-images.githubusercontent.com/58182440/79422150-49cc5900-7ff7-11ea-988d-e0d2b41fc74d.png)
+
+↓ Grid Gap이 0일 경우  
+
+![ba827c2640834e7a855d9e2285235f7f1c55a091795ea36d2c91f6b5c158a768](https://user-images.githubusercontent.com/58182440/79422193-649ecd80-7ff7-11ea-86cb-07b6957b98a4.png)
+
+* ```grid-gap``` : 단축 프로퍼티. row, column 순서로 입력한다. 값을 하나만 작성하면 동일한 값으로 지정된다.  
+
+```
+grid-row-gap: 16px;
+grid-column-gap: 16px;
+/* 위와 아래의 코드는 동일합니다. */
+grid-gap: 16px 16px;
+/* 모두 동일한 코드입니다. */
+grid-gap: 16px;
+```
+
+##### 5. grid container:auto  
+
+* ```grid-auto-rows/columns``` : 크기가 지정되지 않은 Grid Track의 크기를 지정할 수 있는 프로퍼티다.  
+
+>   각 행의 높이를 200px로 설정하고 싶다면,  
+```
+.photos {
+	display: grid;
+	grid-gap: 8px;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-rows: repeat(3, 200px);
+}
+```
+이렇게 설정하면 된다.  
+내용이 칸 밖으로 빠져나갈 경우  ```minmax()```라는 grid함수를 이용하면 된다.  
+
+>   ```minmax(최솟값, 최댓값)``` : 첫 번째 매개변수로 최솟값을, 두 번째 매개변수로 최댓값을 받는다.  
+
+```
+.photos {
+	display: grid;
+	grid-gap: 8px;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-rows: repeat(3, minmax(200px, auto));
+}
+```  
+이와 같이 설정하면 <b>내용에 따라 자동으로 크기가 늘어나는 카드</b>가 완성된다.  
+
+>   추가 카드가 계속 들어오게 되면, 3번째 카드까지만 크기를 설정했기 때문에, 4번째 줄부터는 크기가 지정되지 않은 상태로 바뀐다. 이 때 ```grid-auto```를 쓴다.  
+```
+.photos {
+	display: grid;
+	grid-gap: 8px;
+	grid-template-columns: repeat(3, 1fr);
+	grid-auto-rows: minmax(200px, auto);
+}
+```  
+-> 행의 갯수에 상관없이 크기를 지정할 수 있다.  
+
+* ```grid-auto-flow``` : Grid가 자동으로 배치되는 방향을 결정한다.  
+>   ```row```, ```column```, ```row dense```, ```column dense```를 값으로 가질 수 있다.  
+>   >   dense : 밀집된 형태로 정렬한다.  
+
+-grid-auto-flow:row일 때  
+
+![5df170cb4f63ba5d3d8ed5019bd546bb44803f4645de2bd56fb7887437a24bc0](https://user-images.githubusercontent.com/58182440/79423970-75047780-7ffa-11ea-837b-a810a62bcb47.png)
+
+-gird auto-flow:row dense일 때
+
+![ece19fece107410b3bc7ae657e55f4f03b5916f8cec027be3050a750ae28ebc4](https://user-images.githubusercontent.com/58182440/79424097-92d1dc80-7ffa-11ea-8134-1b5cf4d9482c.png)
+
+
+##### 6. grid container:grid  
+
+grid는 grid-template와 grid-auto의 단축형 프로퍼티다.  
+  
+* ```grid-template``` : grid, grid-template-rows, grid-template-columns 값을 한 번에 적용할 수 있다.  
+  
+```
+.main {
+	display: grid;
+	grid-template: 128px auto 240px / 1fr 3fr 1fr;
+	grid-template-areas: 
+		"hd hd hd"
+		"nav content ad"
+		"ft ft ft";
+}
+```  
+
+* ```auto-flow <grid-auto-rows>/<grid-template-columns>``` : ```grid```로 ```grid-template-rows```와 ```grid-auto```를 동시에 적용할 수 있다.  
+
+```
+.photos {
+	display: grid;
+	grid-gap: 8px;
+	grid-template-columns: repeat(2, 100px);
+	grid-auto-rows: 100px;
+	grid-auto-flow: row;
+}
+```  
+```
+.photos {
+	display: grid;
+	grid-gap: 8px;
+	grid: auto-flow 100px / repeat(2, 100px);
+}
+```
+>   grid의 ```auto-flow```는 ```gird-auto-flow:row```와 동일하다.  
+>   auto-flow의 위치에 의해 결정되는데, / 앞에 있는 경우 row를, / 뒤에 있는 경우는 column을 적용한다.  
+>   ```auto-flow```키워드가 있어야만 ```grid-auto-flow```가 적용된다. _```auto-flow```가 없다면 ```grid-template```의 형식으로 인식된다._  
+
+> dense도 비슷하게 사용한다.  
+```
+.photos {
+	display: grid;
+	grid-gap: 8px;
+	grid: auto-flow dense 100px / repeat(2, 100px);
+}
+```  
+```
+.photos {
+	display: grid;
+	grid-gap: 8px;
+	grid-template-columns: repeat(2, 100px);
+	grid-auto-rows: 100px;
+	grid-auto-flow: row dense;
+}
+```  
+* ```grid-template-rows>/auto-flow<grid-auto-columns>```  
+: ```auto-flow```를 /뒤에 사용하기 때문에 ```grid-auto-flow:column```의 값을 가진다.  
+```
+.photos {
+	display: grid;
+	grid-gap: 8px;
+	grid: repeat(2, 100px) / auto-flow 100px;
+/* 	grid: repeat(2,100px)  / auto-flow dense; */
+}
+```  
+```
+.photos {
+	display: grid;
+	grid-gap: 8px;
+	grid-template-rows: repeat(2, 100px);
+	grid-auto-columns: 100px;
+	grid-auto-flow: column;
+	/* grid-auto-flow: column dense; */
+}
+``` 
+>   grid에는 값을 주는 순서와 ```auto-flow```키워드의 유무에 따라 값이 적용되는 방식이 다르므로 프로퍼티를 사용할 때 신경써야한다.  
+
+##### 7. gird container:align&justify  
+
+* ```align``` : 수직 방향 정렬  
+* ```justify``` : 수평 방향 정렬  
+* ```place``` : align과 justify의 축약형  
+</br>
+
+* ```content``` : Grid Container를 기준으로 Grid Cell을 정렬한다.  
+* ```items``` : Grid Cell 혹은 Grid Area를 기준으로 Grid Item을 정렬한다.  
+</br>
+
+* 프로퍼티의 값 : 앞부분인 ```align```와 ```justify```에 영향을 받지 않고, 오로지 ```content```와 ```items```에만 영향을 받는 값이 있다.  
+
+|```content```와 ```items```에서 모두 가능한 값 | ```content```에서만 가능한 값 |  
+|:---:|:---:|:---:|
+start | sapce-around |  
+center | space-between |  
+end | space-evenly |  
+stretch | |
+    
 
   
 
