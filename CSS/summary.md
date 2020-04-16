@@ -737,11 +737,11 @@ grid는 grid-template와 grid-auto의 단축형 프로퍼티다.
 * 프로퍼티의 값 : 앞부분인 ```align```와 ```justify```에 영향을 받지 않고, 오로지 ```content```와 ```items```에만 영향을 받는 값이 있다.  
 
 |```content```와 ```items```에서 모두 가능한 값 | ```content```에서만 가능한 값 |  
-|:---:|:---:|:---:|
-start | sapce-around |  
-center | space-between |  
-end | space-evenly |  
-stretch | |
+|:---:|:---:|  
+|start | sapce-around |  
+|center | space-between |  
+|end | space-evenly |  
+|stretch | |  
     
 
   
