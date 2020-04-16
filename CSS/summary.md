@@ -405,6 +405,19 @@ flex-direction : column;
 ```align-content```는 flex item들이 여러 줄일 경우 ```flex-direction```방향을 기준으로 수직 정렬 방법을 결정한다.  
 
 * ```stretch``` : 기본값. 
+* ```flex-start```  
+* ```center```  
+* ```flex-end```  
+`
+![Alt text](/path/to/https://grm-project-template-bucket.s3.ap-northeast-2.amazonaws.com/lesson/les_ulamv_1583324496582/b430a583955c4b129e3aa25285d27d37142eea704e89e36731096fb8cc1e2173.png "ex")<img width="50%" height="50%"></img> 
+
+![Alt text](/path/to/https://grm-project-template-bucket.s3.ap-northeast-2.amazonaws.com/lesson/les_ulamv_1583324496582/e4bdfb5b1350631110bdba4a5d78506602851382e7f4c96c92bf8a83902b369e.png "ex")<img width="50%" height="50%"></img>  
+`  
+>   코드에서 align-content를 쓰기 위해서는 ```flex-wrap:wrap```이 꼭 포함되어야 한다.  
+
+
+  
+
 
 
 
