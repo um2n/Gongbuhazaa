@@ -411,7 +411,8 @@ flex-direction : column;
    
 ![b430a583955c4b129e3aa25285d27d37142eea704e89e36731096fb8cc1e2173](https://user-images.githubusercontent.com/58182440/79418789-6b761200-7ff0-11ea-9edc-2a87fab5b4d7.png)
  
-![Uploading e4bdfb5b1350631110bdba4a5d78506602851382e7f4c96c92bf8a83902b369e.png…]()
+![e4bdfb5b1350631110bdba4a5d78506602851382e7f4c96c92bf8a83902b369e](https://user-images.githubusercontent.com/58182440/79418885-9f513780-7ff0-11ea-917d-9f86999d5c2c.png)
+
 
 >   코드에서 align-content를 쓰기 위해서는 ```flex-wrap:wrap```이 꼭 포함되어야 한다.  
 >   >   ```align-content```는 여러 줄에 걸친 item들이 한 몸처럼 움직이고, ```align-items```는 각 줄이 따로 나누어져 정렬된다.  
