@@ -742,7 +742,132 @@ grid는 grid-template와 grid-auto의 단축형 프로퍼티다.
 |center | space-between |  
 |end | space-evenly |  
 |stretch | |  
-    
+
+* 종합  
+-```align-content:center;``` : Grid Container 기준 수직 방향으로 Grid Cell들을 중앙 정렬한다.  
+
+![03b1a0d83cff1b3a3e6327d3bae000a3f04bef3e0ab464967501c2c5350260a9](https://user-images.githubusercontent.com/58182440/79431128-f6f99e00-8004-11ea-9da2-3bc37c15aa2c.png)
+
+-```justify-items:center;``` : Grid Cell 혹은 Grid Area 기준 수평 방향으로 Grid Item을 중앙 정렬한다.  
+
+![00fd5e200f6d3e60123d2d57c8de9e2e2802736ca5689438b8205cc916b42e3f](https://user-images.githubusercontent.com/58182440/79431201-1264a900-8005-11ea-8573-bc53835e6a7d.png)  
+
+* ```place``` : ```place-xxx```는 ```xxx-content```와 ```xxx-item```의 축약 프로퍼티이다. 항상 ```align```을 먼저 쓰고, 그 다음 ```justify```를 쓴다.  
+
+```
+place-content: <align-content> <justify-content>;
+place-items: <align-items> <justify-items>;
+```  
+
+```
+.container {
+	place-content: space-around space-evenly;
+	place-items: center stretch;
+}
+```
+```
+.container {
+	align-content: space-around;
+	justify-content: space-evenly;
+	align-items: center;
+	justify-items: stretch;
+}
+```
+>   값을 하나만 할당하면 동일한 값이 부여된다.  
+
+#### * 위치 정렬 - grid 2  
+  
+##### 1. grid item:row,column  
+_Grid Container 프로퍼티가 Grid Items 전체에 대해 정렬했다면, Grid Item 프로퍼티는 Grid Item 하나에 대해 정렬한다.  
+
+* ```grid-row-xxx```, ```grid-column-xxx```  
+: Grid item의 행, 열의 시작 위치와 끝 위치를 지정할 수 있다.  
+
+![3b964439a38fa3c5dae8e650f636d24bb29bc7afda172c745232c660573b5fca](https://user-images.githubusercontent.com/58182440/79433226-d252f580-8007-11ea-8e10-3d6198fff4e8.png)  
+  
+* ```grid-row``` : ```grid-row-strat```와 ```grid-row-end```의 축약형이다. 
+>   ```grid-row-start``` : Grid Item의 행 방향으로의 시작 위치를 지정한다.  
+>   ```grid-row-end``` : Grid Item의 행 방향으로의 끝나는 위치를 지정한다.  
+  
+*  ```grid-column``` : ```grid-column-start```와 ```grid-column-end```의 축약형이다. ```grid-row-xxx```와 동일하며, 방향만 열 방향이다.  
+
+* 형태  
+```
+grid-row: <grid-row-start> / <grid-row-end>
+grid-column: <grid-column-start> / <grid-column-end>
+```  
+```
+.item:nth-child(1) {
+  grid-column: 1 / 3;
+}
+.item:nth-child(2) {
+  grid-row: 1 / 3;
+  grid-column: -2;
+}
+```
+
+>   ```span```을 사용하면 좀 더 효율 좋은 코드를 만들 수 있다.  
+>   ```span 숫자;``` : 숫자 값만큼 공간을 차지한다.  
+>   >   ```grid-row-end```에 ```span```을 사용하면 ```start```를 기준으로 열을 차지한다.  
+>   >   ```grid-row-start```에 ```span` ``을 사용하면 ` ``end```를 기준으로 배치된다.  
+
+##### 2. grid item:area  
+
+```grid-area```는 ```grid-row```와 ```grid-column```의 단축 속성 역할을 한다. 값을 생략할 경우 auto의 값을 가진다.  
+
+##### 3. grid item:self  
+
+* ```xxx-self``` : 해당 Grid Item을 정렬한다.  
+  
+*   ```align-self``` : 수평 정렬  
+*   ```justify-self``` : 수직 정렬  
+>   둘 다 ```start```, ```center```, ```end```, ```stretch```를 가질 수 있다.  
+*   ```place-self``` : ```align-self```와 ```justify-self```의 단축 프로퍼티이다.  
+```
+align-self: end;
+jusify-self: center;
+```
+```
+place-self: end center;
+```
+
+#### * 상속과 우선순위  
+
+##### 1. 상속  
+: 부모나 조상 요소에 적용된 CSS 프로퍼티를 자식 혹은 후손 요소가 물려받는 것을 말한다.  
+
+>   모든 CSS 프로퍼티가 상속이 되는 것은 아니다.  
+>   ```width```, ```height```, ```margin```, ```padding```, ```display``` 등  
+_w3c에서 제공하는 Full property table에서 찾아 볼 수 있다._  
+
+>   상속이 되지 않는 프로퍼티를 사위에서 상속 받기를 원한다면 값으로 ```inherit```을 주면 해결된다.  
+
+##### 2. 우선순위  
+
+###### CSS = Cascading Style Sheet  
+>   Cascading : CSS 적용 우선순위  
+
+###### * 중요도 : CSS가 어디에 선언 되었는지에 따라 우선순위가 달라진다.  
+
+* ```<head>```태그 내의 ```<style>```태그  
+* ```<head>```태그 내의 ```<style>```태그 내의 @import문  
+* ```<link>```태그로 연결된 CSS  
+* ```<link>```태그로 연결된 CSS 내의 @import문  
+
+###### * 명시도 : 명시도에 따라 우선순위가 달라진다.  
+
+* ```!limportant```  
+* 인라인 스타일(inline style)  
+* 아이디 선택자(id selector)  
+* 클래스, 속성, 가상클래스 선택자(class, attribute, pseudo class selector)  
+* 태그 선택자(type selector)  
+* 전체 선택자(universal selector)  
+* 상속(inherit)  
+
+###### * 선언순서 : 나중에 선언된 스타일이 우선 적용된다.  
+
+
+
 
   
 
