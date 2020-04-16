@@ -405,16 +405,27 @@ flex-direction : column;
 ```align-content```는 flex item들이 여러 줄일 경우 ```flex-direction```방향을 기준으로 수직 정렬 방법을 결정한다.  
 
 * ```stretch``` : 기본값. 
-* ```flex-start```  
-* ```center```  
-* ```flex-end```  
-`
-![Alt text](/path/to/https://grm-project-template-bucket.s3.ap-northeast-2.amazonaws.com/lesson/les_ulamv_1583324496582/b430a583955c4b129e3aa25285d27d37142eea704e89e36731096fb8cc1e2173.png "ex")<img width="50%" height="50%"></img> 
+* ```flex-start``` : 시작 부분에 맞춰서 정렬  
+* ```center``` : 가운데 정렬  
+* ```flex-end``` : 끝 부분에 맞춰서 정렬  
+   
+![b430a583955c4b129e3aa25285d27d37142eea704e89e36731096fb8cc1e2173](https://user-images.githubusercontent.com/58182440/79418789-6b761200-7ff0-11ea-9edc-2a87fab5b4d7.png)
+ 
+![Uploading e4bdfb5b1350631110bdba4a5d78506602851382e7f4c96c92bf8a83902b369e.png…]()
 
-![Alt text](/path/to/https://grm-project-template-bucket.s3.ap-northeast-2.amazonaws.com/lesson/les_ulamv_1583324496582/e4bdfb5b1350631110bdba4a5d78506602851382e7f4c96c92bf8a83902b369e.png "ex")<img width="50%" height="50%"></img>  
-`  
 >   코드에서 align-content를 쓰기 위해서는 ```flex-wrap:wrap```이 꼭 포함되어야 한다.  
+>   >   ```align-content```는 여러 줄에 걸친 item들이 한 몸처럼 움직이고, ```align-items```는 각 줄이 따로 나누어져 정렬된다.  
 
+* ```space-between``` : 수직 방향으로 끝과 끝에 하나씩 기준을 두고 그 사이에 배치한다.  
+
+* ```space-around``` : 모든 간격을 동일하게 배치한다.  
+
+##### 5. flex item  
+  
+flex item의 프로퍼티는 ```display:flex```가 적용된 부모 요소의 자식 요소에만 사용할 수 있다.  
+  
+* ```flex-grow``` : flex item의 확장과 관련된다.  단위 없는 숫자 값(비율)을 사용하며 기본값은 0이다.  값이 0일 경우에 flex container가 커져도 flex item의 크기는 커ㅣ지 않고 원래 크기를 유지하지만, 값이 1 이상일 경우에 flex item의 원래 크기와 상관 없이 flex container를 채우기 위해 flex item도 커지게 된다.  
+  
 
   
 
