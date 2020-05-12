@@ -249,7 +249,7 @@ class Main {
 ```public static int add ~ return result까지가 메소드에 해당하는 부분이다.```  
 
 
-메소드를 만들고 메소드 내용을 코딩하는 것을 ```메소드 정의```라고 한다.
+<span style="color:blue"> 메소드를 만들고 메소드 내용을 코딩하는 것을 ```메소드 정의```라고 한다.</span>
 
 
 
