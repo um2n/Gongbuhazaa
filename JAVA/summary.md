@@ -18,7 +18,7 @@ _전 세계에서 가장 많이 사용하는 언어_
 
  1. 컴퓨터에 JVM이 설치돼있지 않으면 Java 프로그램을 실행시킬 수 없다. JDK를 설치하면 JRE는 자동으로 같이 설치된다.  
  2. 같은 Java의 소스코드는 여러 운영쳋제에서 수정하지 않고 사용할 수 있다.  
-    > Native Language : 특정 운영체제에서만 사용가능한 프로그래밍 언어 _C언어_
+    > Native Language : 특정 운영체제에서만 사용가능한 프로그래밍 언어 _C언어_  
     > Managed Language : 여러 운영체제에서 사용할 수 있는 프로그래밍 언어 _Java_  
  3. Managed Language는 Native Language보다 실행속도가 느리다.  
 
@@ -248,7 +248,7 @@ class Main {
 ```public static int add ~ return result까지가 메소드에 해당하는 부분이다.```  
 
 
-<font color=blue>_메소드를 만들고 메소드 내용을 코딩하는 것을 ```메소드 정의```라고 한다._</font>
+<font color=blue>메소드를 만들고 메소드 내용을 코딩하는 것을 ```메소드 정의```라고 한다.</font>
 
 
 
