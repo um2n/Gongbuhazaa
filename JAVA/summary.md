@@ -503,6 +503,73 @@ _생성자는 return형을 사용하지 않으며 클래스와 동일한 이름�
 
 
 
+* 기본 생성자 : 매개변수가 존재하지 않는 생성자  
+   > 매개변수를 포함한 생성자 또한 만들 수 있다.
+   "클래스 안에 매개변수가 들어간 생성자만 정의했다면, 객체에 메모리를 할당할 때 생성자에 포함된 매개변수를 잊지말고 입력해야 한다."  
+
+
+* 생성자는 보통 멤버 변수들의 초기화 및 객체의 복사와 같은 역할로 사용된다.  
+
+
+
+
+3. 접근제한자 : 멤버 변수 및 메소드를 선언할 때 사용한다.  
+
+
+   1. 자료 제한 범위  
+      - public : 제한 없음  
+      - protected : 자식 클래스에게는 public, 그 외에는 private  
+      - NOT USE : 같은 패키지에서는 public, 그 외에는 private  
+      - private : 본인 객체 내에서만 사용 가능  
+
+
+```
+import java.io.*;
+class Main {
+	public static void main(String[] args) {
+		ClassExample ce;
+		ce = new ClassExample();
+		
+		ce.mDouble = 10;	// 오류 발생
+		ce.CE_Print_mDouble();
+		
+		ce.CE_Set_mDouble(30);
+		ce.CE_Print_mDouble();
+	}
+}
+
+class ClassExample {
+	
+	private double mDouble;
+	
+	public void CE_Print_mDouble() {
+		System.out.println(mDouble);
+	}
+	
+	public void CE_Set_mDouble(double dInput) {
+		mDouble = dInput;
+	}
+	
+}
+```  
+
+
+   - private 접근제한자는 객체 자기 자신 안에서만 사용할 수 있기 때문에 7번째 줄처럼 객체의 바깥에서 멤버에 직접 접근을 시도하면 오류가 발생한다. 따라서 public으로 선언된 멤버를 활용해야 한다.  
+
+
+
+
+
+4. static에 대하여  
+
+main 메소드에서는 무조건 ```static```이 붙어야 한다. static은 메소드 혹은 변수에 붙어 사용할 수 있다. <b>만약 클래스 안의 멤버에 static이 붙으면 그 멤버는 클래스의 객체를 선언하지 않고 바로 콜해서 사용할 수 있다.</b>  
+
+
+
+
+
+
+
 
 
 
