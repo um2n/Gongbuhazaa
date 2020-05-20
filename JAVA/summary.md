@@ -562,13 +562,78 @@ class ClassExample {
 
 4. static에 대하여  
 
-main 메소드에서는 무조건 ```static```이 붙어야 한다. static은 메소드 혹은 변수에 붙어 사용할 수 있다. <b>만약 클래스 안의 멤버에 static이 붙으면 그 멤버는 클래스의 객체를 선언하지 않고 바로 콜해서 사용할 수 있다.</b>  
+main 메소드에서는 무조건 ```static```이 붙어야 한다. static은 메소드 혹은 변수에 붙어 사용할 수 있다. <b>만약 클래스 안의 멤버에 static이 붙으면 그 멤버는 클래스의 객체를 선언하지 않고 바로 콜해서 사용할 수 있다.</b>   
+
+
+   > main 메소드에 ```static```이 붙어야 하는 이유는 main 메소드가 프로그램이 처음 시작되는 메소드이기 때문에 main 메소드보다 빨리 실행될 수 있는 코드가 없기 때문에 static을 사용하지 않으면 main 메소드의 메모리를 할당해줄 부분이 존재하지 않기 때문에, 프로그램의 시작과 함께 main 메소드의 메모리를 할당해야 한다.  
 
 
 
 
 
+### 데이터 입출력  
 
+* 콘솔 : 대표적인 CLI 개발 환경으로 글자를 이용한 입출력 환경을 뜻한다. 
+
+
+1. 키보드 데이터 입력받기 ```Scanner```   
+
+ 
+
+```
+import java.io.*;
+import java.util.Scanner;	// Scanner 사용시 명시 필수!
+
+class Main {
+	public static void main(String[] args) {
+		int iVal;
+		double dVal;		
+		
+		Scanner scanner = new Scanner(System.in);
+		
+		System.out.print("정수를 입력해주세요 : ");
+		iVal = scanner.nextInt();				
+		System.out.println("입력 정수 : " + iVal);
+		
+		System.out.print("실수를 입력해주세요 : ");
+		dVal = scanner.nextDouble();				
+		System.out.println("입력 실수 : " + dVal);
+	}
+}
+```  
+
+
+   1. ```Scanner```클래스를 사용하기 위해서는 ```import java.util.Scanner; ```를 꼭 명시해줘야 한다.   
+   2. scanner 객체에 메모리가 할당되고 나면 ```nextInt()```메소드 혹은 ```nextDouble()```메소드 등을 사용해서 사용자가 입력하는 숫자를 본인이 원하는 변수에 저장할 수 다.  
+
+
+
+
+2. 키보드 데이터 입렵받기 : ```BufferedReader```  
+
+
+
+```
+import java.io.*;
+
+class Main {
+    public static void main(String[] args) throws Exception {
+        
+    	String sVal;
+    	
+		// BufferedReader 초기화
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        
+        System.out.print("문자열을 입력해주세요 : ");
+        sVal = br.readLine();
+        System.out.println("입력 문자열 : " + sVal);
+        br.close();
+    }
+}
+```  
+
+
+   1. 
 
 
 
