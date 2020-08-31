@@ -146,7 +146,7 @@ print('%d X %d = %d' & (2, 3, 2 * 3))
 
 <b> 여러줄 문자열 </b>  
 
->  ``` ``` ``` 나 """ 을 사용하면 여러 줄을 입력할 수 있게 됨. (enter키 사용 가능) 
+>  ``` ``` 나 """ 을 사용하면 여러 줄을 입력할 수 있게 됨. (enter키 사용 가능) 
 
 </br>  
 
@@ -304,7 +304,10 @@ i, s, b = (123, 'abc', True)
 ## 9. 반복   
 </br>
 
-<b> ```for``` : 횟수로 반복하기 </b>  
+<b> ```for```</b>
+
+ : 횟수로 반복하기 
+
 
 ```for``` 변수 ```in``` 순서열 ```:```    명령1    명령2 ```  
 _:와 명령 사이, 명령과 명령 사이에 띄어쓰기 4칸(Tab)_  
@@ -332,7 +335,9 @@ for letter in my_str :    print('문자:', letter)
 문자 : g  
 ```  
 
-<b> ```range(stop)``` : 순서열을 만들어준다. </b>  
+<b> ```range(stop)``` </b> 
+
+: stop전까지의 순서열을 만들어준다. 
 
 ```
 for count in range(3) :    print('횟수:', count)  
@@ -340,6 +345,34 @@ for count in range(3) :    print('횟수:', count)
 => 횟수 : 0  
 횟수 : 1  
 횟수 : 2  
+```
+
+<b> ```range(strat, stop)``` </b>
+
+: start부터 stop전까지의 순서열을 만들어준다.
+
+
+```
+for count in range(5,10):    '횟수:', count
+
+=> 횟수 : 5
+횟수 : 6
+횟수 : 7
+횟수 : 8
+횟수 : 9
+```
+
+<b> for 중첩하기 </b>  
+
+```
+for j in range(2) :
+for i in range(2) :
+print('i:{}, j:{}'.format(i,j))
+
+=> i:0, j:0
+i:1, j:0
+i:0, j:1
+i:1, j:1
 ```
 
 
